@@ -7,7 +7,8 @@ fn main() {
     solution_two();
 }
 
-// not working - it prolongs `scope lifetime
+// not working - it prolongs `scope lifetime - it's prohibited
+// NOTE(source code): good lifetime relationship 
 fn solution_one() {
     let nums = Vec::from_iter(0..100);
     let mut results: [Option<ScopedJoinHandle<i32>>; 4] = [const { None }; 4];
