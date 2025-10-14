@@ -56,17 +56,15 @@ fn array_sharing_bench(iter_count: usize) {
                 // просто копируем один и тот же буфер
                 // Sync trait must be implemented for implicit borrowing in other thread
                 sender.send(buffer).unwrap();
-                // receiver.recv().unwrap();
             }
+            drop(sender);
         });
-        
-        // sender.send(buffer).unwrap();
+
 
         // consumer
         println!("\tConsumer: {:?}", thread::current().id());
         while let Ok(res) = receiver.recv() {
             std::hint::black_box(&res);
-            // println!("Got data: {} bytes", res.len())
         }
 
         println!("Elapsed: {:?}ms", instant.elapsed().as_millis());
