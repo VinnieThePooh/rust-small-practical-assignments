@@ -18,7 +18,7 @@ impl<'a, T> Hello<'a> for &'a Wrapper<T>
 where
     &'a T: Hello<'a>,
 {
-    
+
     fn hi(&'a self) {
         // you actually define timespan of lifetime 'a itself here - being inside current method body,
         // but it thus means that the ref to instance itself will outlive that lifetime
