@@ -1,0 +1,11 @@
+[package]
+name = "reqwest-form-url-encoding-samples"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+reqwest = "0.12.24"
+serde_qs = "0.15.0"
+serde_urlencoded = "0.7.1"
+tokio = { version = "1.48.0", features = ["full"] }
+serde = { version = "1.0.228", features = ["derive"] }
