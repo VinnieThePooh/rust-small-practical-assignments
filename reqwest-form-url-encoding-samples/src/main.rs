@@ -46,7 +46,7 @@ async fn url_encode_via_serde_urlencoded() -> Result<Response, Box<dyn std::erro
 }
 
 // works well - most generic version
-async fn url_encode_via_serde_qs() -> Result<Response, Box<dyn std::error::Error>> {
+async fn url_encode_via_serde_qs() -> Result<String, Box<dyn std::error::Error>> {
     let data = FormData {
         id: 42,
         values: vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -58,7 +58,8 @@ async fn url_encode_via_serde_qs() -> Result<Response, Box<dyn std::error::Error
         .post("http://localhost:5129/accept-form-url-encoded")
         .body(encoded_data)
         .header(reqwest::header::CONTENT_TYPE, "application/x-www-form-urlencoded")
-        .send().await?;
+        .send().await?
+        .text().await?;
     Ok(response)
 }
 
