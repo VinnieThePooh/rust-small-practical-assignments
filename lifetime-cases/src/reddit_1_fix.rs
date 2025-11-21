@@ -9,8 +9,9 @@ trait Hello<'a> {
 }
 
 // no refs here
-impl<'a> Hello<'a> for &'a () {     // NOTE: may replace last 'a with '_ - lifetime inference
-                                    // (or omitted entirely, but it would be different semantics)
+impl<'a> Hello<'a> for &'a () {
+    // NOTE: may replace last 'a with '_ - lifetime inference
+    // (or omitted entirely, but it would be different semantics)
 
     // self is &&'a () here
     fn hi(&self) {
